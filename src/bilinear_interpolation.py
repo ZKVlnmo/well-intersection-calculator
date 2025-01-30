@@ -28,15 +28,17 @@ def bilinear_interpolation_4terms_with_angle(angle_rad, x, y,x1,y1,x2,y2,x3,y3,x
 
     x0 = (x1+x2+x3+x4)/4
     y0 = (y1+y2+y3+y4)/4
+
     cos = math.cos(angle_rad)
     sin = math.sin(angle_rad)
-    x1_new = (x1 - x0) * cos - (y1 - y0) * sin + x0
-    y1_new = (x1 - x0) * sin + (y1 - y0) * cos + y0
-    x4_new = (x4 - x0) * cos - (y4 - y0) * sin + x0
-    y4_new = (x4 - x0) * sin + (y4 - y0) * cos + y0
-    x_new = (x - x0) * cos - (y - y0) * sin + x0
-    y_new = (x - x0) * sin + (y - y0) * cos + y0
+    x1_new = (x1 - x0) * cos + (y1 - y0) * sin
+    y1_new = -(x1 - x0) * sin + (y1 - y0) * cos
+    x4_new = (x4 - x0) * cos + (y4 - y0) * sin
+    y4_new = -(x4 - x0) * sin + (y4 - y0) * cos
+    x_new = (x - x0) * cos + (y - y0) * sin
+    y_new = -(x - x0) * sin + (y - y0) * cos
 
 
     return bilinear_interpolation_4terms(x_new, y_new, x1_new, y1_new, x4_new, y4_new, z)
+# print(bilinear_interpolation_4terms_with_angle(math.radians(15),1025.000000, 1250.000000,994.828774 , 1219.067070,1043.125065 , 1232.008022, 981.887821 , 1267.363361,1030.184113 , 1280.304313,[23.00,28.00, 24.00,29.00]))
 
