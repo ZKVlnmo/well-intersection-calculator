@@ -1,4 +1,6 @@
 import math
+
+
 def bilinear_interpolation_4terms(x, y, x1, y1, x4, y4, z):
     """
     Выполняет билинейную интерполяцию для заданной точки (x, y) внутри прямоугольной области,
@@ -15,7 +17,7 @@ def bilinear_interpolation_4terms(x, y, x1, y1, x4, y4, z):
     """
     f11, f12, f21, f22 = z
 
-    if x4-x1 != 0 and y4-y1 != 0:
+    if x4 - x1 != 0 and y4 - y1 != 0:
         term1 = f11 * (x4 - x) * (y4 - y) / ((x4 - x1) * (y4 - y1))
         term2 = f12 * (x4 - x) * (y - y1) / ((x4 - x1) * (y4 - y1))
         term3 = f21 * (x - x1) * (y4 - y) / ((x4 - x1) * (y4 - y1))
@@ -24,10 +26,10 @@ def bilinear_interpolation_4terms(x, y, x1, y1, x4, y4, z):
     else:
         return None
 
-def bilinear_interpolation_4terms_with_angle(angle_rad, x, y,x1,y1,x2,y2,x3,y3,x4,y4, z):
 
-    x0 = (x1+x2+x3+x4)/4
-    y0 = (y1+y2+y3+y4)/4
+def bilinear_interpolation_4terms_with_angle(angle_rad, x, y, x1, y1, x2, y2, x3, y3, x4, y4, z):
+    x0 = (x1 + x2 + x3 + x4) / 4
+    y0 = (y1 + y2 + y3 + y4) / 4
 
     cos = math.cos(angle_rad)
     sin = math.sin(angle_rad)
@@ -38,7 +40,5 @@ def bilinear_interpolation_4terms_with_angle(angle_rad, x, y,x1,y1,x2,y2,x3,y3,x
     x_new = (x - x0) * cos + (y - y0) * sin
     y_new = -(x - x0) * sin + (y - y0) * cos
 
-
     return bilinear_interpolation_4terms(x_new, y_new, x1_new, y1_new, x4_new, y4_new, z)
 # print(bilinear_interpolation_4terms_with_angle(math.radians(15),1025.000000, 1250.000000,994.828774 , 1219.067070,1043.125065 , 1232.008022, 981.887821 , 1267.363361,1030.184113 , 1280.304313,[23.00,28.00, 24.00,29.00]))
-
