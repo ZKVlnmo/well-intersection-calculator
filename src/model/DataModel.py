@@ -1,10 +1,10 @@
 from pydantic import BaseModel, ValidationError
-from typing import List
+from typing import List, Any
 
 class GridModel(BaseModel):
     x_coords: List[float]
     y_coords: List[float]
-    height_matrix: List[List[float]]
+    height_matrix: List[List[Any]]
 
 class DataModel(BaseModel):
     grid: GridModel

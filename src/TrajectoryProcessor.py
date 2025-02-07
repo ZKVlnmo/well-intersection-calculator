@@ -28,19 +28,25 @@ class TrajectoryProcessor:
         """Проверяет граничные значения для каждой траектории."""
 
         for trajectory in self.data.trajectories:
+            # Находим максимальные и минимальные значения высоты траектории
             max_trajec_z = max(sublist[2] for sublist in trajectory)
             min_trajec_z = min(sublist[2] for sublist in trajectory)
 
-            max_grid_z = max(max(row) for row in self.data.grid.height_matrix)
-            min_grid_z = min(min(row) for row in self.data.grid.height_matrix)  # Исправлено на min
+            # Обработка height_matrix, игнорируя None значения
+            max_grid_z = float('-inf')  # Начальное значение для максимума
+            min_grid_z = float('inf')  # Начальное значение для минимума
+
+            for row in self.data.grid.height_matrix:
+                for value in row:
+                    if value is not None:  # Игнорируем None
+                        max_grid_z = max(max_grid_z, value)
+                        min_grid_z = min(min_grid_z, value)
 
             # Если значения траектории выходят за пределы высотной сетки
             if max_trajec_z > max_grid_z or min_trajec_z < min_grid_z:
-                #заготовка для точек
-                self.result.append([])
+                self.result.append([])  # Заготовка для точек
             else:
-                # точно не будет точек
-                self.result.append(None)
+                self.result.append(None)  # Если точек нет
 
     def find_near_point(self, trajectories):
         """Находит ближайшие точки для заданных траекторий."""
