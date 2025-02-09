@@ -100,7 +100,7 @@ def bresenham_grid_with_corners(x1, y1, x2, y2, grid_x, grid_y):
 
     def find_index(grid, value):
         for i in range(len(grid) - 1):
-            if grid[i] <= value < grid[i + 1]:
+            if grid[i] <= value <= grid[i + 1]:
                 return i
         return None
 
@@ -123,7 +123,7 @@ def bresenham_grid_with_corners(x1, y1, x2, y2, grid_x, grid_y):
         x_min, x_max = grid_x[i1], grid_x[i1 + 1]
         y_min, y_max = grid_y[j1], grid_y[j1 + 1]
 
-        cells.append((x_min, y_min, x_max, y_max))
+        cells.append({"index":(grid_x.index(x_min), grid_y.index(y_min), grid_x.index(x_max), grid_y.index(y_max)),"value":(x_min, y_min, x_max, y_max)})
 
         if i1 == i2 and j1 == j2:
             break

@@ -6,6 +6,6 @@ class GridModel(BaseModel):
     y_coords: List[float]
     height_matrix: List[List[Any]]
 
-class DataModel(BaseModel):
+class TrajectoriesModel(BaseModel):
     grid: GridModel
     trajectories: List[List[List[float]]]

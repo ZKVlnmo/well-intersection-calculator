@@ -1,4 +1,4 @@
-import unittest
+import test
 import math
 
 from src.bilinear_interpolation import bilinear_interpolation_4terms, bilinear_interpolation_4terms_with_angle
@@ -6,7 +6,7 @@ from src.bilinear_interpolation import bilinear_interpolation_4terms, bilinear_i
 
 # Здесь мы предполагаем, что функции bilinear_interpolation_4terms и bilinear_interpolation_4terms_with_angle уже определены
 
-class TestBilinearInterpolation(unittest.TestCase):
+class TestBilinearInterpolation(test.TestCase):
 
     def test_bilinear_interpolation_4terms_normal(self):
         # Тест с обычными значениями
@@ -63,4 +63,4 @@ class TestBilinearInterpolation(unittest.TestCase):
 
 
 if __name__ == "__main__":
-    unittest.main()
+    test.main()
