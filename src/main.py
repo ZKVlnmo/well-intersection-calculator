@@ -4,7 +4,7 @@ data = {
     "grid": {
         "x_coords": [-2, -1, 0, 1],
         "y_coords": [-1, 0, 1, 2],
-        "height_matrix": [[2, None, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]],
+        "height_matrix": [[2, None, 1, 1], [None, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]],
 
     },
     "trajectories": [

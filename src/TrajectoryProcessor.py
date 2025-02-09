@@ -21,7 +21,7 @@ class TrajectoryProcessor:
                     self.result[i] = self.find_line_plane_intersection(near_point)
             for i in range(len(self.result)):
                  print(f"result trajectories {i}:" ,self.result[i])
-
+            return  self.result
         except ValidationError as e:
             print("❌ Ошибка валидации данных:")
             print(e.json())
