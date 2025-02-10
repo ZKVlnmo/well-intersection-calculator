@@ -1,13 +1,13 @@
 from pydantic import ValidationError
 from typing import List, Dict, Tuple, Optional
-from grid_math import (
+from src.grid_math import (
     bilinear_interpolation_4terms,
     binary_search_nearest,
     bresenham_grid_with_corners,
     is_point_in_rectangle
 )
 from src.model import GridModel, TrajectoriesModel
-from spatial_geometry import best_fit_plane, line_plane_intersection, line_from_two_points
+from src.spatial_geometry import best_fit_plane, line_plane_intersection, line_from_two_points
 
 
 class TrajectoryProcessor:
