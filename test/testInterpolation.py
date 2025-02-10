@@ -1,7 +1,7 @@
 import test
 import math
 
-from src.bilinear_interpolation import bilinear_interpolation_4terms, bilinear_interpolation_4terms_with_angle
+from src.grid_math import bilinear_interpolation_4terms, bilinear_interpolation_4terms_with_angle
 
 
 # Здесь мы предполагаем, что функции bilinear_interpolation_4terms и bilinear_interpolation_4terms_with_angle уже определены

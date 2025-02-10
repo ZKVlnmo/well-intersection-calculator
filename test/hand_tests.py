@@ -1,4 +1,4 @@
-from src.TrajectoryProcessor import TrajectoryProcessor
+from src.trajectoryProcessor import TrajectoryProcessor
 
 data = {
     "grid": {

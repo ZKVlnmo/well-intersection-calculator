@@ -1,10 +1,10 @@
-from src.TrajectoryProcessor import TrajectoryProcessor
+from src.trajectoryProcessor import TrajectoryProcessor
 
 data = {
     "grid": {
         "x_coords": [-2, -1, 0, 1],
         "y_coords": [-1, 0, 1, 2],
-        "height_matrix": [[2, None, 1, 1], [None, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]],
+        "height_matrix": [[2, None, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]],
 
     },
     "trajectories": [
@@ -16,5 +16,6 @@ data = {
 }
 
 Processor = TrajectoryProcessor()
-Processor.calculateIntersections(data)
+print(Processor.calculate_intersections(data))
+
 
