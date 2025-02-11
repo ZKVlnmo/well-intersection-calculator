@@ -51,24 +51,37 @@ def best_fit_plane(points: List[Tuple[float, float, Optional[float]]]) -> Option
     return A, B, C, D
 
 
-def line_plane_intersection(plane: Tuple[float, float, float, float], line_point: Tuple[float, float, float],
-                            line_dir: Tuple[float, float, float]) -> Optional[Tuple[float, float, float]]:
+
+
+def line_plane_intersection(
+        plane: Tuple[float, float, float, float],
+        line_point: Tuple[float, float, float],
+        line_dir: Tuple[float, float, float]
+    ) -> Optional[Tuple[float, float, float]]:
     """
     Вычисляет точку пересечения прямой и плоскости.
 
     :param plane: Коэффициенты плоскости (A, B, C, D).
     :param line_point: Точка на прямой (x, y, z).
     :param line_dir: Направляющий вектор прямой (dx, dy, dz).
-    :return: Точка пересечения (x, y, z) или None, если прямая параллельна плоскости.
+    :return:
+        - Точка пересечения (x, y, z), если пересечение существует.
+        - line_point, если прямая лежит в плоскости.
+        - None, если прямая параллельна плоскости и не лежит в ней.
     """
     A, B, C, D = plane
     x0, y0, z0 = line_point
     dx, dy, dz = line_dir
 
-    denom = A * dx + B * dy + C * dz
-    if abs(denom) < 1e-10:
-        return None
+    denom = A * dx + B * dy + C * dz  # Вычисляем знаменатель для параметра t
 
+    if abs(denom) < 1e-10:
+        # Проверяем, лежит ли прямая в плоскости
+        if abs(A * x0 + B * y0 + C * z0 + D) < 1e-10:
+            return line_point  # Прямая лежит в плоскости
+        return None  # Прямая параллельна плоскости, но не лежит в ней
+
+    # Вычисляем параметр t для нахождения точки пересечения
     t = -(A * x0 + B * y0 + C * z0 + D) / denom
     return x0 + t * dx, y0 + t * dy, z0 + t * dz
 

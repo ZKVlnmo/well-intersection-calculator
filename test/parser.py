@@ -1,7 +1,4 @@
-from src.trajectoryProcessor import TrajectoryProcessor
-
 import numpy as np
-
 
 def parse(filename: str):
     with open(filename) as irap_data:
@@ -47,12 +44,3 @@ def parse(filename: str):
         "trajectories": [[[1, 1, 1], [1, 2, 2], [1, 3, 3]], [[1, 1, 1], [1, 2, 2], [1, 3, 3]]]
     }
     return data
-d = []
-
-data = parse("test_data/Copy of P50_J14_Toppr.irap")
-data["trajectories"] = [d]
-for i in range(-5000,1000,100):
-    d.append([(61352+79330)/2,(299628+322815)/2, i])
-
-Processor = TrajectoryProcessor()
-print(Processor.calculate_intersections(data))

@@ -2,7 +2,7 @@
 name = "well-intersection-calculator"
 version = "0.1.0"
 description = ""
-authors = ["Zdekh Kirill <zdekhKirill@mail.ru>"]
+authors = ["Zdekh"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
