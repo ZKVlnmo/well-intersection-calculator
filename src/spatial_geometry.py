@@ -2,28 +2,7 @@ import numpy as np
 from typing import List, Tuple, Optional
 
 
-def best_fit_plane_three_points(points: List[Tuple[float, float, Optional[float]]]) -> Optional[
-    Tuple[float, float, float, float]]:
-    """
-    Вычисляет коэффициенты уравнения плоскости Ax + By + Cz + D = 0, проходящей через три точки.
 
-    :param points: Список из трех точек, каждая представлена кортежем (x, y, z).
-    :return: Кортеж коэффициентов (A, B, C, D) .
-    """
-
-    p1, p2, p3 = points
-    x1, y1, z1 = p1
-    x2, y2, z2 = p2
-    x3, y3, z3 = p3
-
-    v1 = np.array([x2 - x1, y2 - y1, z2 - z1])
-    v2 = np.array([x3 - x1, y3 - y1, z3 - z1])
-
-    normal = np.cross(v1, v2)
-    A, B, C = normal
-    D = -(A * x1 + B * y1 + C * z1)
-
-    return A, B, C, D
 
 
 def best_fit_plane(points: List[Tuple[float, float, Optional[float]]]) -> Optional[Tuple[float, float, float, float]]:
@@ -35,13 +14,8 @@ def best_fit_plane(points: List[Tuple[float, float, Optional[float]]]) -> Option
     """
     x, y, z = np.array(points).T
 
-    if list(z).count(None) > 1:
+    if list(z).count(None) > 0:
         return None
-
-    if list(z).count(None) == 1:
-        none_index = list(z).index(None)
-        valid_points = [points[i] for i in range(len(points)) if z[i] is not None]
-        return best_fit_plane_three_points(valid_points)
 
     M = np.c_[x, y, np.ones(len(points))]
     ABCD, _, _, _ = np.linalg.lstsq(M, -z, rcond=None)

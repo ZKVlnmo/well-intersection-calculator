@@ -35,7 +35,7 @@ class TrajectoryProcessor:
                     potential_intersection_points_neighbors = self.find_potential_intersection_points_neighbors(
                         self.data.trajectories[i], max_grid_z, min_grid_z, 1)
                     result[i] = self.find_line_plane_intersection(potential_intersection_points_neighbors)
-
+            result = [item if item is not None else [] for item in data]
             return result
         except ValidationError as e:
             print("❌ Ошибка валидации данных:")
